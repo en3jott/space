@@ -34,12 +34,12 @@ selectScript(selects);
 					menu.classList.toggle("active");
 					if(menu.classList.contains('active')) {
 						body.style.overflow = 'hidden';
-						body.style.maxHeight = '100vh';
+						body.style.touchAction = 'none';
 						overlay.classList.add('active');
 
 					} else {
 						body.style.overflow = '';
-						body.style.maxHeight = '';
+						body.style.touchAction = '';
 						overlay.classList.remove('active');
 					}
 		};
