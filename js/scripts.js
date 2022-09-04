@@ -1,6 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
-	//поссивное прослушивание событий(для оптимизации) 
-document.addEventListener('touchstart', onTouchStart, {passive: true});
+
 	// select
 let selects = document.querySelectorAll('.select');
 let selectScript = function (select) {
