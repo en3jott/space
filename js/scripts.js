@@ -1,5 +1,6 @@
-document.addEventListener('touchstart', onTouchStart, {passive: true});
+
 window.addEventListener('DOMContentLoaded', () => {
+
 	// select
 let selects = document.querySelectorAll('.select');
 let selectScript = function (select) {
