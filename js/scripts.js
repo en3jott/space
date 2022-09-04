@@ -33,10 +33,10 @@ selectScript(selects);
 					burger.classList.toggle("active");
 					menu.classList.toggle("active");
 					if(menu.classList.contains('active')) {
-						body.style.overflow = 'hidden';
+						body.style.position = 'fixed';
 						overlay.classList.add('active');
 					} else {
-						body.style.overflow = '';
+						body.style.position = 'relative';
 						overlay.classList.remove('active');
 					}
 		};
