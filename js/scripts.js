@@ -1,3 +1,7 @@
+	//init AOS.js
+	AOS.init({
+		once: true,
+	});
 
 window.addEventListener('DOMContentLoaded', () => {
 
