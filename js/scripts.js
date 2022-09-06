@@ -1,9 +1,9 @@
-	//init AOS.js
-	AOS.init({
-		once: true,
-	});
-
 window.addEventListener('DOMContentLoaded', () => {
+
+//init AOS.js
+AOS.init({
+	once: true,
+});
 
 	// select
 let selects = document.querySelectorAll('.select');
@@ -23,6 +23,11 @@ let selectScript = function (select) {
                 item.classList.remove("is-active");
             }
         });
+				document.addEventListener("scroll", function (event) {
+					if (!item.contains(event.target)) {
+							item.classList.remove("is-active");
+					}
+			});
     });
 }
 selectScript(selects);
@@ -67,6 +72,33 @@ selectScript(selects);
 	};
 	burger ('.burger', '.mobile-menu', 'html', '.overlay');
 
+
+	let scrolled;
+	let timer;
+	const btn = document.querySelector('.pageup');
+	btn.addEventListener('click', function() {
+		scrolled = window.pageYOffset;
+		scrollToTop();
+	});
+	window.onscroll = function showHide() {
+		if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+			btn.style.transform = 'scale(1)';
+		}
+		else {
+			btn.style.transform = 'scale(0)';
+		}
+	}
+	function scrollToTop() {
+		if(scrolled > 0) {
+			window.scrollTo(0, scrolled);
+			scrolled -= 30;
+			timer = setTimeout(scrollToTop, 1);
+		} else  {
+			clearTimeout(timer);
+			window.scrollTo(0,0);
+		}
+	}
+
 	//sticky scroll btn
 	$(window).scroll(function() {
 		var $button = $('.pageup');
@@ -82,33 +114,18 @@ selectScript(selects);
 				}
 			});
 
-	//scroll top 
-	$(function () {
-		$('.pageup').click(function () {
-			$("html, body").animate({
-				scrollTop: 0
-			}, 1000);
-		})
-	});
-	$(window).scroll(function () {
-		if ($(this).scrollTop() > 500) {
-			$('.pageup').fadeIn();
-		}
-		else {
-			$('.pageup').fadeOut();
-		}
- 	});
-
-	//sticky menu
-	$(document).ready(function() {
-		$(window).scroll(function() {
-			if ($(this).scrollTop() >= 150) {
-				$("header").addClass("fix");
-			} else {
-				$("header").removeClass("fix");
+	//sticky header
+	const stickyHeader = () => {
+		window.addEventListener('scroll', () => {
+			if (document.body.scrollTop > 120 || document.documentElement.scrollTop > 120) {
+				document.querySelector('.header').classList.add('fix');
 			}
-		});
-	});
+			else {
+				document.querySelector('.header').classList.remove('fix');
+			}
+		})
+	}
+	stickyHeader();
 
 	$('.slider-problems').slick({
 		dots: true,
